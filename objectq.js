@@ -1,7 +1,7 @@
 var EventEmitter = require('events').EventEmitter,
     fs = require('fs');
 
-var TinyQ = function (path, interval) {
+var ObjectQ = function (path, interval) {
 
   this._fpath = path;
   this._queue = null;
@@ -20,7 +20,7 @@ var TinyQ = function (path, interval) {
   }, interval || 30000, this);
 };
 
-TinyQ.prototype.flush = function (cb) {
+ObjectQ.prototype.flush = function (cb) {
 
   if (this._flushing)
     return;
@@ -43,31 +43,31 @@ TinyQ.prototype.flush = function (cb) {
   }
 };
 
-TinyQ.prototype.queue = function (obj) {
+ObjectQ.prototype.queue = function (obj) {
   this._queue.push(obj);
   this._dirty = true;
 };
 
-TinyQ.prototype.shift = function () {
+ObjectQ.prototype.shift = function () {
   var obj = this._queue.shift();
   this._dirty = (typeof obj != 'undefined');
   return obj;
 };
 
-TinyQ.prototype.unshift = function (obj) {
+ObjectQ.prototype.unshift = function (obj) {
   this._queue.unshift(obj);
   this._dirty = true;
 };
 
-TinyQ.prototype.shutdown = function (cb) {
+ObjectQ.prototype.shutdown = function (cb) {
   clearInterval(this._timer);
   this.flush(cb);
 };
 
-TinyQ.prototype.count = function () {
+ObjectQ.prototype.count = function () {
   return this._queue.length;
 };
 
 module.exports = {
-  TinyQ: TinyQ
+  ObjectQ: ObjectQ
 };

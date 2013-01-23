@@ -1,0 +1,29 @@
+{
+  "name": "objectq",
+  "description": "Simple persistent queue for tiny node apps",
+  "version": "0.0.1",
+  "author": {
+    "name": "Jesus A. Domingo",
+    "email": "jesus.domingo@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "noodlehaus",
+      "email": "jesus.domingo@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/noodlehaus/node-objectq.git"
+  },
+  "keywords": [
+    "queue",
+    "persistent queue",
+    "simple"
+  ],
+  "dependencies": {},
+  "main": "./objectq",
+  "engines": {
+    "node": ">= 0.8.0"
+  }
+}

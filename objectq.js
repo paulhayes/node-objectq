@@ -25,12 +25,11 @@ ObjectQ.prototype.flush = function (cb) {
   if (this._flushing)
     return;
 
-  this._flushing = true;
-
   cb = cb || function () {};
 
   if (this._dirty) {
     var self = this;
+    this._flushing = true;
     fs.writeFile(self._fpath, JSON.stringify(self._queue), function (err) {
       self._flushing = false;
       if (err) {

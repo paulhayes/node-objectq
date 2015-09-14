@@ -15,9 +15,12 @@ var ObjectQ = function (path, interval) {
 
   this._flushing = false;
 
-  this._timer = setInterval(function (self) {
-    self.flush();
-  }, interval || 30000, this);
+  if( typeof(interval)=='undefined' ){
+      this._timer = setInterval(function (self) {
+        self.flush();
+      }, interval || 30000, this);
+  }
+
 };
 
 ObjectQ.prototype.flush = function (cb) {
@@ -39,6 +42,9 @@ ObjectQ.prototype.flush = function (cb) {
         cb(null);
       }
     });
+  }
+  else {
+    cb(null);
   }
 };
 

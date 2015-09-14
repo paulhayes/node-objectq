@@ -1,7 +1,7 @@
 {
   "name": "objectq",
   "description": "Simple persistent queue for tiny node apps",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": {
     "name": "Jesus A. Domingo",
     "email": "jesus.domingo@gmail.com"
@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "http://github.com/noodlehaus/node-objectq.git"
+    "url": "git+ssh://git@github.com/noodlehaus/node-objectq.git"
   },
   "keywords": [
     "queue",
@@ -25,5 +25,15 @@
   "main": "./objectq",
   "engines": {
     "node": ">= 0.8.0"
-  }
+  },
+  "readme": "# ObjectQ\n\nA very simple persistent object queue for tiny node apps. Don't take this module seriously, it's meant for small things.\n\n## Installation\n\n```\nnpm install objectq\n```\n\n## Example Use\n\n``` js\nvar ObjectQ = require('objectq').ObjectQ,\n    tasks = new ObjectQ('save-to-this-file.json', saveQueueEveryMillis = 60000);\n\n// put things into the queue\ntasks.queue({ someKey: 'something you need to queue', anotherKey: 'whatever' });\n\n// get something from the queue, removes whatever is returned\nvar something = tasks.shift();\n\n// get your queue length\nconsole.log(tasks.count());\n\n// shutdown the queue before exiting, to make sure you save it\nprocess.on('SIGINT', function () {\n  tasks.shutdown(function (err) {\n    if (err) throw err;\n    console.log('queue saved. exiting.');\n    process.exit(0);\n  });\n});\n```\n\n## License\n\n(The MIT License)\n\nCopyright (c) 2013 Jesus A. Domingo <jesus.domingo@gmail.com>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/noodlehaus/node-objectq/issues"
+  },
+  "homepage": "https://github.com/noodlehaus/node-objectq#readme",
+  "_id": "objectq@0.0.1",
+  "_shasum": "617c267782a5d97ffb42d3800525c5ab5da38bcd",
+  "_resolved": "https://github.com/paulhayes/node-objectq/tarball/master",
+  "_from": "https://github.com/paulhayes/node-objectq/tarball/master"
 }

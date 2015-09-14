@@ -25,10 +25,10 @@ console.log(tasks.count());
 
 // shutdown the queue before exiting, to make sure you save it
 process.on('SIGINT', function () {
-  tasks.shutdown(fucntion (err) {
+  tasks.shutdown(function (err) {
     if (err) throw err;
     console.log('queue saved. exiting.');
-    process.exit(1);
+    process.exit(0);
   });
 });
 ```
